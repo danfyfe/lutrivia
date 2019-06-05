@@ -4,73 +4,47 @@ import React from 'react'
 
 class Question extends React.Component{
   state = {
-    correct:"",
-    answered: "false",
-    backgroundColor:"",
-    button: ""
-
+    correct: "",
+    alreadyAnsweredQuestion: false
   }
 
-  handleClick = (event)=>{
-    debugger
-    this.props.toggleAnswering()
-    if (event.target.value === this.props.question.answer.toString()) {
-      // let currentScore = this.state.score
-      this.setState({
-        correct:"true",
-        answered: "true",
-        backgroundColor: "#cefb79",
-        button: event.target.value
-        // score: ++currentScore
-      })
-    }else{
-      // let currentScore = this.state.score
-      this.setState({
-        correct:"false",
-        answered: "true",
-        backgroundColor: "#fb686c",
-        button: event.target.value
-        // score: currentScore
-      })
+  handleClick = (event) => {
+    this.setState({
+      alreadyAnsweredQuestion: true
+    })
+
+    if (!this.state.alreadyAnsweredQuestion) {
+      if (event.target.value === this.props.question.answer.toString()) {
+        event.target.style.backgroundColor = "#cefb79"
+        this.setState({correct: true})
+      } else {
+        event.target.style.backgroundColor = "#fb686c"
+        this.setState({correct: false})
+      }
+    }
+  }
+
+  nextQuestion = () => {
+    this.props.answerQ(this.props.qIndex)
+    if (this.state.correct) {
+      this.props.incrementScore()
     }
   }
 
 
   render(){
-    if (this.state.answered === "false") {
-      return(
-        <div className = "question-div">
-          <p>{this.props.question.text}</p>
-          <button onClick={this.handleClick} value="true">True</button>
-          <button onClick={this.handleClick} value ="false">False</button>
-        </div>
-      )
-    }else {
-       // question answered
-       // console.log(this.state.answered)
-       // console.log(this.state.correct)
-       if (this.state.button === "true") {
-         return(
-           <div className = "question-div">
-           <p>{this.props.question.text}</p>
-           <button style={{backgroundColor:this.state.backgroundColor}}
-           value="true">True</button>
-           <button
-           value ="false">False</button>
-           </div>
-         )
-       }else {
-         return(
-           <div className = "question-div">
-           <p>{this.props.question.text}</p>
-           <button
-           value="true">True</button>
-           <button style={{backgroundColor:this.state.backgroundColor}}
-           value ="false">False</button>
-           </div>
-         )
-       }
-    }
+    return(
+      <div className = "question-div">
+        <p>{this.props.question.text}</p>
+        <button onClick={this.handleClick} value="true">True</button>
+        <button onClick={this.handleClick} value ="false">False</button>
+        {
+          this.state.alreadyAnsweredQuestion ?
+          <button onClick={this.nextQuestion}>Next Question</button> :
+          null
+        }
+      </div>
+    )
   }
 }
 

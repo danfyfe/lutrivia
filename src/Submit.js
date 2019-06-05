@@ -5,18 +5,10 @@ class Submit extends React.Component{
   render(){
     return (
       <div className = "submit">
-      <NameInput/>
+        <NameInput/>
       </div>
     )
   }
-
-
-
-
 }
-
-
-
-
 
 export default Submit

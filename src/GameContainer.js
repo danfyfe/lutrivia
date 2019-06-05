@@ -17,8 +17,8 @@ class GameContainer extends React.Component{
               className="new-game-button"
               onClick={this.props.handleNewGameClick}
             >New Game</button> :
-            
-            <span className = "score">Score: 0</span>
+
+            <span className = "score">Score: {this.props.score}</span>
           }
         </div>
     )
