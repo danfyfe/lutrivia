@@ -1,23 +1,14 @@
 import React from 'react';
-
+import Question from './Question.js'
 
 class QuestionsContainer extends React.Component{
-
-
+  
   render(){
     const firstFive = this.props.questions.slice(5)
 
-    const questionDivs = firstFive.map(function(question){
-      return <div key = {question.text} className = "question-div"><p>{question.text}</p>
 
-      <button>True</button>
-
-
-      <button>False</button>
-
-
-
-      </div>
+    const questionDivs = firstFive.map((question)=>{
+        return <Question key={question.text}question = {question}/>
     })
 
     return(

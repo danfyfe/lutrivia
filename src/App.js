@@ -11,6 +11,7 @@ class App extends React.Component {
 
   state = {
     game: "not playing"
+
   }
 
   handleNewGameClick = (event)=>{
@@ -18,8 +19,6 @@ class App extends React.Component {
       game: "playing"
     })
   }
-
-
 
   render(){
 
@@ -38,6 +37,7 @@ class App extends React.Component {
            questions = {data.questions}
            game = {this.state.game}
            handleNewGameClick={this.handleNewGameClick}
+          
            />
         </div>
       );

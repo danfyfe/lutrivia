@@ -21,5 +21,27 @@
   font-weight: 500;
 }
 
+.question-div-correct button{
+  margin: 10px;
+  background-color: green;
+  border-color: #b7b7b7;
+  border-radius: 3px;
+  -moz-box-shadow:    inset 0 0 1px #000000;
+  -webkit-box-shadow: inset 0 0 1px #000000;
+  box-shadow:         inset 0 0 1px #000000;
+  font-weight: 500;
+}
+
+.question-div-incorrect button{
+  margin: 10px;
+  background-color: red;
+  border-color: #b7b7b7;
+  border-radius: 3px;
+  -moz-box-shadow:    inset 0 0 1px #000000;
+  -webkit-box-shadow: inset 0 0 1px #000000;
+  box-shadow:         inset 0 0 1px #000000;
+  font-weight: 500;
+}
+
 
 
